@@ -38,4 +38,5 @@ class ResultFragment : Fragment() {
             val restoredText = prefs.getInt("TAG_NAME", 0)
             binding.finish.text = "You answered ${restoredText} out of 5 questions"
     }
+
 }

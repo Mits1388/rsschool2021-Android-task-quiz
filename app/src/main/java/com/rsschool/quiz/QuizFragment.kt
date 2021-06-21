@@ -46,17 +46,41 @@ class QuizFragment : Fragment() {
         binding.optionThree.text = it.getString("option3")
         binding.optionFour.text = it.getString("option4")
         binding.optionFive.text = it.getString("option5")
+       // arguments?.getInt("answer")
 
             }
 
         binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
           if(checkedId == binding.optionOne.id){
-            //Toast.makeText(activity, binding.optionOne.text.toString(), Toast.LENGTH_SHORT).show()
-             i++
-          // Toast.makeText(activity, i.toString(), Toast.LENGTH_SHORT).show()
-              SaveIntoSharedPrefs("TAG_NAME", i)
+          if(arguments?.getInt("answer")?.equals(1) == true) {
+                  i++
+              //    Toast.makeText(activity,arguments?.getInt("answer").toString(),Toast.LENGTH_SHORT).show()
+              }
+
+          }else if(checkedId == binding.optionTwo.id){
+              if(arguments?.getInt("answer")?.equals(2) == true) {
+                  i++
+                //  Toast.makeText(activity,arguments?.getInt("answer").toString(),Toast.LENGTH_SHORT).show()
+              }
+          }else if(checkedId == binding.optionThree.id){
+              if(arguments?.getInt("answer")?.equals(3) == true) {
+                  i++
+                //  Toast.makeText(activity,arguments?.getInt("answer").toString(),Toast.LENGTH_SHORT).show()
+              }
+          }else if(checkedId == binding.optionFour.id){
+              if(arguments?.getInt("answer")?.equals(4) == true) {
+                  i++
+                //  Toast.makeText(activity,arguments?.getInt("answer").toString(),Toast.LENGTH_SHORT).show()
+              }
+          }else if(checkedId == binding.optionFive.id){
+              if(arguments?.getInt("answer")?.equals(5) == true) {
+                  i++
+                //  Toast.makeText(activity,arguments?.getInt("answer").toString(),Toast.LENGTH_SHORT).show()
+              }
           }
 
+
+            SaveIntoSharedPrefs("TAG_NAME", i)
        /*   else if(checkedId == binding.optionTwo.id){
             Toast.makeText(activity, binding.optionTwo.text.toString(), Toast.LENGTH_SHORT).show()
         }else if(checkedId == binding.optionThree.id){

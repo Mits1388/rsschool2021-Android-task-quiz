@@ -11,11 +11,11 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 class QuizAdapter (fragment: FragmentActivity): FragmentStateAdapter(fragment){
 
     val questions = listOf<Question>(
-        Question("The capitals of Belarus?", "Minsk", "Hrodna", "Vitebsk", "Mogilev","Brest", "a"),
-        Question("The capital of Russia?", "Moscow", "Omsk", "Saint Petersburg", "Magadan","Ufa", "a"),
-        Question("The capital of Ukraine?", "Kiev", "Lviv", "Simferopol", "Odesa","Uzhhorod", "a"),
-        Question("The capital of France?", "Paris", "Lyon", "Saint-Étienne", "Rennes", "Marseille","a"),
-        Question("The capital of Germany?", "Berlin", "Stuttgart", "Dewunmi", "Hamburg","Munich", "a")
+        Question("The capitals of Belarus?", "Minsk", "Hrodna", "Vitebsk", "Mogilev","Brest", 1),
+        Question("The capital of Russia?", "Magadan", "Omsk", "Saint Petersburg", "Moscow","Ufa", 4),
+        Question("The capital of Ukraine?", "Lviv", "Kiev", "Simferopol", "Odesa","Uzhhorod", 2),
+        Question("The capital of France?", "Marseille", "Lyon", "Saint-Étienne", "Rennes", "Paris",5),
+        Question("The capital of Germany?", "Berlin", "Stuttgart", "Dewunmi", "Hamburg","Munich", 1)
     )
 
     override fun getItemCount(): Int {
@@ -31,6 +31,7 @@ class QuizAdapter (fragment: FragmentActivity): FragmentStateAdapter(fragment){
             "option3" to questions[position].option3,
             "option4" to questions[position].option4,
             "option5" to questions[position].option5,
+            "answer" to questions[position].answer,
             "position" to position+1
         )
 return fragment
