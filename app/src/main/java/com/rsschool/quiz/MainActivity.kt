@@ -22,6 +22,7 @@ class MainActivity : FragmentActivity() {
         viewPager = binding.container
         viewPager.adapter = adapter
 
+
         binding.nextButton.setOnClickListener {
             if (viewPager.currentItem == 4) {
                 openResultFragment()

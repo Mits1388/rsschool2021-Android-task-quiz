@@ -15,10 +15,10 @@ import com.rsschool.quiz.databinding.FragmentQuizBinding
 
 class QuizFragment : Fragment() {
 
-//не удалять
+
     private var _binding: FragmentQuizBinding? = null
     private val binding get() = _binding!!
-   //  private var i = 0
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -78,19 +78,7 @@ class QuizFragment : Fragment() {
                 //  Toast.makeText(activity,arguments?.getInt("answer").toString(),Toast.LENGTH_SHORT).show()
               }
           }
-
-
             SaveIntoSharedPrefs("TAG_NAME", i)
-       /*   else if(checkedId == binding.optionTwo.id){
-            Toast.makeText(activity, binding.optionTwo.text.toString(), Toast.LENGTH_SHORT).show()
-        }else if(checkedId == binding.optionThree.id){
-            Toast.makeText(activity, binding.optionThree.text.toString(), Toast.LENGTH_SHORT).show()
-        }else if(checkedId == binding.optionFour.id){
-            Toast.makeText(activity, binding.optionFour.text.toString(), Toast.LENGTH_SHORT).show()
-        }else if(checkedId == binding.optionFive.id){
-            Toast.makeText(activity, binding.optionFive.text.toString(), Toast.LENGTH_SHORT).show()
-        }
-       */
         }
 
         }
@@ -104,6 +92,10 @@ class QuizFragment : Fragment() {
        editor.commit()
     }
 
+  /*  override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+    }*/
 
 
 
