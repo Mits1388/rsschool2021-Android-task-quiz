@@ -1,5 +1,11 @@
 <resources>
-    <string name="app_name">Quiz</string>
+    <string name="app_name">QuizTest</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="start">Start</string>
+    <string name="quiz_on_the_knowledge_of_capitals">Quiz on the knowledge of capitals</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="close">Close</string>
+    <string name="textview">TextView</string>
 </resources>
