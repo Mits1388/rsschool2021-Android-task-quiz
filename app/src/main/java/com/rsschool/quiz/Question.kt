@@ -7,8 +7,8 @@ data class Question(
     val option3: String,
     val option4: String,
     val option5: String,
-    val answer: Int,
-    val theme: Int
+    val answer: Int
+   // val theme: Int
     )
 
 

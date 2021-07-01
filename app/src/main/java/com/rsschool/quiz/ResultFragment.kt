@@ -36,7 +36,6 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
 
         binding.finishText.text ="Your result is ${arguments?.getInt("answer").toString()} out of 5"
 
-
         binding.closeButton.setOnClickListener {
             activity?.finish()
         }
