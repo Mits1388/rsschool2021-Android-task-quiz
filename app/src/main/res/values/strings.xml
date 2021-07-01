@@ -8,4 +8,9 @@
     <string name="next">Next</string>
     <string name="close">Close</string>
     <string name="textview">TextView</string>
+    <string name="answerone">answerOne</string>
+    <string name="answertwo">answerTwo</string>
+    <string name="answerthree">answerThree</string>
+    <string name="answerfour">answerFour</string>
+    <string name="answerfive">answerFive</string>
 </resources>

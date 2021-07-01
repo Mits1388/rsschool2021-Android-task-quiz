@@ -8,7 +8,6 @@ data class Question(
     val option4: String,
     val option5: String,
     val answer: Int
-   // val theme: Int
     )
 
 

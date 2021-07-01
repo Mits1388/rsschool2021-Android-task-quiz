@@ -7,9 +7,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".QuizFragment">
 
-
-
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="0dp"

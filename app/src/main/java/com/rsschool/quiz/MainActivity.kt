@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.rsschool.quiz.databinding.ActivityMainBinding
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityMainBinding
 

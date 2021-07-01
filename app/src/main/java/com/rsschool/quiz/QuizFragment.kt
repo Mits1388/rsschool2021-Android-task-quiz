@@ -6,26 +6,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.rsschool.quiz.databinding.FragmentQuizBinding
 import com.rsschool.quiz.databinding.FragmentQuizViewPagerBinding
 
-var i = 0
 
 class QuizFragment : Fragment() {
 
     var answers = mutableListOf( 0, 0, 0, 0, 0)
+    var optionString = mutableListOf("","","","","")
 
 
-    //private lateinit var listener: OnQuizFragmentListener
     private var _binding: FragmentQuizViewPagerBinding? = null
     private val binding get() = _binding!!
-
-
-
     val questions = listOf<Question>(
         Question(
             "The capitals of Belarus?",
@@ -35,7 +30,6 @@ class QuizFragment : Fragment() {
             "Mogilev",
             "Brest",
             1,
-           // R.style.Theme_Quiz_One
         ),
         Question(
             "The capital of Russia?",
@@ -45,7 +39,6 @@ class QuizFragment : Fragment() {
             "Moscow",
             "Ufa",
             4,
-         // R.style.Theme_Quiz_Two
         ),
         Question(
             "The capital of Ukraine?",
@@ -55,7 +48,6 @@ class QuizFragment : Fragment() {
             "Odesa",
             "Uzhhorod",
             2,
-          //  R.style.Theme_Quiz_Three
         ),
         Question(
             "The capital of France?",
@@ -65,7 +57,6 @@ class QuizFragment : Fragment() {
             "Rennes",
             "Paris",
             5,
-          // R.style.Theme_Quiz_Four
         ),
         Question(
             "The capital of Germany?",
@@ -75,22 +66,14 @@ class QuizFragment : Fragment() {
             "Hamburg",
             "Munich",
             1,
-          // R.style.Theme_Quiz_Five
         )
     )
-
-   // val theme1 = arrayOf(R.style.Theme_Quiz_One, R.style.Theme_Quiz_Two,
-     //   R.style.Theme_Quiz_Three, R.style.Theme_Quiz_Four, R.style.Theme_Quiz_Five)
-
-
-
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //questions[]?.let { changeTheme() }
         _binding = FragmentQuizViewPagerBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -101,20 +84,8 @@ class QuizFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding){
         viewPager.adapter = MyViewPagerAdapter(viewPager)
-        //viewPager.isUserInputEnabled = false
-     /*   viewPager.registerOnPageChangeCallback(object :
-            ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                Toast.makeText(activity, "position ${position}", Toast.LENGTH_LONG).show()
-            }
-        })
-            */
     }
     }
-
-
-
 
 
 
@@ -135,11 +106,10 @@ class QuizFragment : Fragment() {
 
         @SuppressLint("SetTextI18n")
         override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
             changeTheme(position)
 
             with(holder){
-
-               // binding.fragmentQuiz.context?.theme?.applyStyle( questions[position].theme, true)
 
                 binding.toolbar.title =  "Question ${position+1}"
                 binding.question.text = questions[position].currentQuestion
@@ -167,6 +137,7 @@ class QuizFragment : Fragment() {
                             }else{
                                 answers[position] = 0
                             }
+                            optionString[position] = questions[position].option1
                         }
                         binding.optionTwo.id -> {
                             if (questions[position].answer.equals(2)) {
@@ -174,6 +145,7 @@ class QuizFragment : Fragment() {
                             }else{
                                 answers[position] = 0
                             }
+                            optionString[position] = questions[position].option2
                         }
                         binding.optionThree.id -> {
                             if (questions[position].answer.equals(3)) {
@@ -181,6 +153,7 @@ class QuizFragment : Fragment() {
                             }else{
                                 answers[position] = 0
                             }
+                            optionString[position] = questions[position].option3
                         }
                         binding.optionFour.id -> {
                             if (questions[position].answer.equals(4)) {
@@ -188,6 +161,7 @@ class QuizFragment : Fragment() {
                             }else{
                                 answers[position] = 0
                             }
+                            optionString[position] = questions[position].option4
                         }
                         binding.optionFive.id -> {
 
@@ -196,13 +170,16 @@ class QuizFragment : Fragment() {
                             }else{
                                 answers[position] = 0
                             }
+                            optionString[position] = questions[position].option5
                         }
                     }
                 }
 
                 binding.nextButton.setOnClickListener {
                     if (position == questions.size - 1) {
-                        openResultFragment(answers.toTypedArray())
+                        openResultFragment(answers.toTypedArray(),
+                            optionString as ArrayList<String>
+                        )
                     } else {
                         viewPager.currentItem = position + 1
                     }
@@ -225,8 +202,8 @@ class QuizFragment : Fragment() {
     }
 
 
-    private fun openResultFragment(answer: Array<Int>) {
-        val resultFragment: Fragment = ResultFragment.newInstance(answer)
+    private fun openResultFragment(answer: Array<Int>, optionString: ArrayList<String>) {
+        val resultFragment: Fragment = ResultFragment.newInstance(answer, optionString)
         val transaction = requireActivity().supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container, resultFragment)
         transaction.commit()
@@ -235,24 +212,14 @@ class QuizFragment : Fragment() {
 
 
     private fun changeTheme(position: Int) {
-
-
-
-
         when (position) {
             0 -> requireContext().setTheme(R.style.Theme_Quiz_One)
             1 -> requireContext().setTheme(R.style.Theme_Quiz_Two)
             2 -> requireContext().setTheme(R.style.Theme_Quiz_Three)
             3 -> requireContext().setTheme(R.style.Theme_Quiz_Four)
             else -> requireContext().setTheme(R.style.Theme_Quiz_Five)
-            //else -> requireContext().setTheme(R.style.Theme_Quiz_Five)
         }
-
-
     }
-
-
-
 }
 
 

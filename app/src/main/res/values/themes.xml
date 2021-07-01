@@ -7,8 +7,6 @@
     </style>
 -->
 
-
-
     <style name="Theme.Quiz" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/deep_orange_100</item>
         <item name="colorPrimaryDark">@color/deep_orange_100_dark</item>

@@ -28,38 +28,39 @@ class ResultFragment : Fragment(R.layout.fragment_result) {
         _binding = null
     }
 
-
-
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.finishText.text ="Your result is ${arguments?.getInt("answer").toString()} out of 5"
-
-        binding.closeButton.setOnClickListener {
+        with(binding) {
+            questionOne.text = "The capitals of Belarus?"
+            answerOne.text = "answer: ${arguments?.getStringArrayList("option")?.get(0)}"
+            questionTwo.text = "The capital of Russia?"
+            answerTwo.text = "answer: ${arguments?.getStringArrayList("option")?.get(1)}"
+            questionThree.text = "The capital of Ukraine?"
+            answerThree.text = "answer: ${arguments?.getStringArrayList("option")?.get(2)}"
+            questionFour.text = "The capital of France?"
+            answerFour.text = "answer: ${arguments?.getStringArrayList("option")?.get(3)}"
+            questionFive.text = "The capital of Germany?"
+            answerFive.text = "answer: ${arguments?.getStringArrayList("option")?.get(4)}"
+            finishText.text = "Your result is ${arguments?.getInt("answer").toString()} out of 5"
+            closeButton.setOnClickListener {
             activity?.finish()
         }
-
     }
-
-
-    private fun onStartQuizFragment() {
-        val fragment: Fragment = QuizFragment()
-        val transaction = requireActivity().supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.container, fragment).commit()
     }
-
-
 
     companion object {
         @JvmStatic
-        fun newInstance(answer: Array<Int>): ResultFragment {
+        fun newInstance(answer: Array<Int>, optionString: ArrayList<String>): ResultFragment {
             val fragment = ResultFragment()
             val args = Bundle()
             args.putInt(ANSWER, answer.sum())
+            args.putStringArrayList(OPTION, optionString)
             fragment.arguments = args
             return fragment
         }
+        private const val OPTION = "option"
         private const val ANSWER = "answer"
     }
 }
